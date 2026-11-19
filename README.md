@@ -1,58 +1,181 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# AUTOVEX
+## Motorcycle Service Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+AUTOVEX merupakan aplikasi berbasis web untuk membantu pengelolaan layanan service sepeda motor. Aplikasi ini dibuat menggunakan Laravel 13, PHP, MySQL, dan API yang dapat diuji menggunakan Postman.
 
-## About Laravel
+### Fitur Aplikasi
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. **Data Pelanggan**
+   - Tambah, lihat, edit, dan hapus data pelanggan.
+   - Informasi nama, nomor HP, alamat, dan pekerjaan.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. **Data Kendaraan**
+   - Mengelola data kendaraan pelanggan.
+   - Pilihan jenis kendaraan Matic dan Manual Transmisi.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. **Daftar Service**
+   - Pendaftaran service kendaraan.
+   - Dropdown kendaraan dan pelanggan.
+   - Nama pelanggan terisi otomatis.
 
-## Learning Laravel
+4. **Data Service**
+   - Pengelolaan detail pengerjaan service.
+   - Keluhan kendaraan terisi otomatis berdasarkan ID Service.
+   - Estimasi biaya, mekanik, dan sparepart.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5. **Pembayaran Service**
+   - Pengelolaan transaksi pembayaran.
+   - Pilihan Cash/Tunai dan Non Tunai.
+   - Informasi jumlah biaya dan keterangan pembayaran.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Teknologi yang Digunakan
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- Laravel 13
+- PHP 8.5
+- MySQL
+- HTML, CSS, dan JavaScript
+- Composer
+- Node.js dan NPM
+- Git dan GitHub
+- Postman
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+# CARA INSTALASI DAN MENJALANKAN AUTOVEX
+
+## 1. Persiapan Software
+
+Pastikan komputer sudah memiliki:
+- XAMPP
+- PHP yang kompatibel dengan Laravel 13
+- Composer
+- Node.js dan NPM
+- Git
+- Visual Studio Code
+
+## 2. Clone Repository
+
+Buka terminal VS Code, kemudian jalankan:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/Mulia123456/autovex13.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Masuk ke folder aplikasi:
 
-## Contributing
+```bash
+cd autovex13
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 3. Instal Dependency Laravel
 
-## Code of Conduct
+Jalankan:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+## 4. Membuat File Environment
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Pada PowerShell, jalankan:
 
-## License
+```powershell
+Copy-Item .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Kemudian buat application key:
+
+```bash
+php artisan key:generate
+```
+
+## 5. Konfigurasi Database MySQL
+
+Buka file `.env`, kemudian atur konfigurasi berikut:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=autovex_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Sesuaikan username dan password MySQL dengan konfigurasi komputer masing-masing.
+
+## 6. Membuat Database
+
+1. Jalankan Apache dan MySQL melalui XAMPP.
+2. Buka phpMyAdmin.
+3. Buat database dengan nama `autovex_db`.
+
+## 7. Membuat Tabel Database
+
+Jalankan perintah:
+
+```bash
+php artisan migrate
+```
+
+## 8. Instal Dependency Frontend
+
+Pada terminal jalankan:
+
+```bash
+npm install
+```
+
+Jika menggunakan PowerShell Windows dan perintah tersebut diblokir, gunakan:
+
+```powershell
+npm.cmd install
+```
+
+Kemudian bangun aset aplikasi:
+
+```powershell
+npm.cmd run build
+```
+
+## 9. Menjalankan Aplikasi
+
+Jalankan:
+
+```bash
+php artisan serve
+```
+
+Buka browser dan akses:
+
+```text
+http://127.0.0.1:8000
+```
+
+Aplikasi AUTOVEX siap digunakan.
+
+---
+
+# API AUTOVEX
+
+API tersedia untuk lima modul berikut:
+
+```text
+/api/pelanggans
+/api/kendaraans
+/api/daftar-services
+/api/data-services
+/api/pembayaran-services
+```
+
+API dapat diuji menggunakan Postman dengan metode GET, POST, PUT, dan DELETE.
+
+### Catatan
+
+- File `.env` tidak disertakan dalam repository demi keamanan.
+- Folder `vendor` dan `node_modules` dibuat kembali melalui proses instalasi dependency.
+- Database harus dibuat dan dimigrasikan pada komputer masing-masing.
+- Data pelanggan, kendaraan, dan transaksi dari komputer pembuat project tidak otomatis ikut tersalin melalui Git Clone.
+
+**Repository GitHub:**  
+https://github.com/Mulia123456/autovex13
