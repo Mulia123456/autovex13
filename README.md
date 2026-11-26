@@ -1,99 +1,150 @@
 # AUTOVEX
-## Motorcycle Service Management System
+### Motorcycle Service Management System
 
-AUTOVEX merupakan aplikasi berbasis web untuk membantu pengelolaan layanan service sepeda motor. Aplikasi ini dibuat menggunakan Laravel 13, PHP, MySQL, dan API yang dapat diuji menggunakan Postman.
+AUTOVEX merupakan aplikasi berbasis web untuk membantu pengelolaan layanan servis sepeda motor secara terstruktur dan terintegrasi. Aplikasi ini dikembangkan menggunakan Laravel 13, PHP, MySQL, HTML, CSS, JavaScript, serta REST API yang dapat diuji menggunakan Postman.
 
-### Fitur Aplikasi
+AUTOVEX membantu proses pengelolaan data pelanggan, kendaraan, pendaftaran servis, pengerjaan servis, hingga pembayaran melalui satu sistem.
 
-1. **Data Pelanggan**
-   - Tambah, lihat, edit, dan hapus data pelanggan.
-   - Informasi nama, nomor HP, alamat, dan pekerjaan.
+## Fitur Aplikasi
 
-2. **Data Kendaraan**
-   - Mengelola data kendaraan pelanggan.
-   - Pilihan jenis kendaraan Matic dan Manual Transmisi.
+### 1. Data Pelanggan
+- Menambah, melihat, mengedit, dan menghapus data pelanggan.
+- Mengelola nama lengkap, nomor HP, alamat, dan pekerjaan.
 
-3. **Daftar Service**
-   - Pendaftaran service kendaraan.
-   - Dropdown kendaraan dan pelanggan.
-   - Nama pelanggan terisi otomatis.
+### 2. Data Kendaraan
+- Mengelola informasi kendaraan pelanggan.
+- Menyimpan nomor plat, jenis kendaraan, nomor STNK, tahun pembuatan, nama pemilik, dan warna.
+- Menyediakan pilihan jenis kendaraan Matic dan Manual Transmisi.
 
-4. **Data Service**
-   - Pengelolaan detail pengerjaan service.
-   - Keluhan kendaraan terisi otomatis berdasarkan ID Service.
-   - Estimasi biaya, mekanik, dan sparepart.
+### 3. Daftar Service
+- Mendaftarkan kendaraan yang akan diservis.
+- Memilih kendaraan dan pelanggan melalui dropdown.
+- Menampilkan nama pelanggan secara otomatis.
+- Mencatat keluhan kendaraan dan tanggal servis.
 
-5. **Pembayaran Service**
-   - Pengelolaan transaksi pembayaran.
-   - Pilihan Cash/Tunai dan Non Tunai.
-   - Informasi jumlah biaya dan keterangan pembayaran.
+### 4. Data Service
+- Mengelola detail pekerjaan servis.
+- Memilih ID Service dari data pendaftaran.
+- Menampilkan keluhan kendaraan secara otomatis berdasarkan ID Service.
+- Mengelola estimasi servis, mekanik, dan sparepart pengganti.
 
-### Teknologi yang Digunakan
+### 5. Pembayaran Service
+- Mengelola transaksi pembayaran servis.
+- Menyediakan pilihan Cash/Tunai dan Non Tunai.
+- Mencatat jumlah biaya dan keterangan pembayaran.
 
-- Laravel 13
-- PHP 8.5
+## Teknologi yang Digunakan
+
+- Laravel Framework 13
+- PHP 8.5.12 pada lingkungan pengembangan
 - MySQL
 - HTML, CSS, dan JavaScript
 - Composer
 - Node.js dan NPM
+- XAMPP dan phpMyAdmin
 - Git dan GitHub
 - Postman
-
----
-
-# CARA INSTALASI DAN MENJALANKAN AUTOVEX
-
-## 1. Persiapan Software
-
-Pastikan komputer sudah memiliki:
-- XAMPP
-- PHP yang kompatibel dengan Laravel 13
-- Composer
-- Node.js dan NPM
-- Git
 - Visual Studio Code
 
-## 2. Clone Repository
+## Persyaratan Sistem
 
-Buka terminal VS Code, kemudian jalankan:
+Sebelum menjalankan AUTOVEX, pastikan komputer memiliki:
 
-```bash
-git clone https://github.com/Mulia123456/autovex13.git
-```
+1. PHP minimal 8.4.1 sesuai dependency yang digunakan pada project.
+2. Composer untuk instalasi package PHP.
+3. Node.js dan NPM untuk mengelola aset frontend.
+4. MySQL sebagai database.
+5. Git untuk melakukan cloning repository.
+6. Browser untuk membuka aplikasi.
 
-Masuk ke folder aplikasi:
+**Penting:** Jika komputer memiliki beberapa versi PHP, pastikan terminal menggunakan versi yang kompatibel sebelum menjalankan Composer atau Laravel.
 
-```bash
-cd autovex13
-```
+## Cara Instalasi dan Menjalankan AUTOVEX
 
-## 3. Instal Dependency Laravel
+### Langkah 1 — Memeriksa Versi PHP
+
+Buka terminal PowerShell pada Visual Studio Code.
 
 Jalankan:
 
-```bash
+```powershell
+php -v
+```
+
+Pastikan versi PHP minimal 8.4.1.
+
+Jika komputer Windows menggunakan PHP 8.2 dari XAMPP dan mempunyai PHP 8.5 di folder `C:\Cphp85`, jalankan:
+
+```powershell
+$env:Path = "C:\Cphp85;" + $env:Path
+php -v
+```
+
+Lokasi folder PHP tersebut hanya contoh dari lingkungan pengembangan AUTOVEX dan harus disesuaikan pada komputer masing-masing.
+
+### Langkah 2 — Clone Repository
+
+Masuk ke direktori tempat project akan disimpan, misalnya:
+
+```powershell
+cd C:\xamppBARU\htdocs
+```
+
+Clone repository AUTOVEX:
+
+```powershell
+git clone https://github.com/Mulia123456/autovex13.git autovex13-clone
+```
+
+Masuk ke direktori hasil clone:
+
+```powershell
+cd autovex13-clone
+```
+
+**Catatan:** Hindari melakukan clone di dalam folder AUTOVEX asli agar tidak membingungkan lokasi project. Nama folder clone boleh disesuaikan.
+
+### Langkah 3 — Instal Dependency Laravel
+
+Pastikan terminal berada di folder yang berisi `artisan` dan `composer.json`.
+
+Jalankan:
+
+```powershell
 composer install
 ```
 
-## 4. Membuat File Environment
+Composer akan menginstal dependency berdasarkan file `composer.lock`.
 
-Pada PowerShell, jalankan:
+Jika muncul masalah ketidakcocokan versi PHP, periksa kembali versi PHP aktif. Jangan langsung menggunakan `composer update` atau `--ignore-platform-reqs`.
+
+### Langkah 4 — Membuat File Environment
+
+Jalankan:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Kemudian buat application key:
+Perintah tersebut membuat file `.env` berdasarkan konfigurasi contoh.
 
-```bash
+Kemudian jalankan:
+
+```powershell
 php artisan key:generate
 ```
 
-## 5. Konfigurasi Database MySQL
+### Langkah 5 — Konfigurasi Database MySQL
 
-Buka file `.env`, kemudian atur konfigurasi berikut:
+Jalankan MySQL melalui XAMPP, kemudian buka phpMyAdmin.
 
-```env
+Buat database bernama:
+
+`autovex_db`
+
+Setelah itu, buka file `.env` pada Visual Studio Code dan atur konfigurasi database berikut:
+
+```ini
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -102,63 +153,83 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Sesuaikan username dan password MySQL dengan konfigurasi komputer masing-masing.
+**Penting:** Konfigurasi tersebut harus ditulis di file `.env`, bukan dijalankan sebagai perintah PowerShell.
 
-## 6. Membuat Database
+Username dan password MySQL dapat berbeda pada setiap komputer.
 
-1. Jalankan Apache dan MySQL melalui XAMPP.
-2. Buka phpMyAdmin.
-3. Buat database dengan nama `autovex_db`.
+### Langkah 6 — Membersihkan Cache Konfigurasi
 
-## 7. Membuat Tabel Database
+Jalankan:
 
-Jalankan perintah:
+```powershell
+php artisan config:clear
+```
 
-```bash
+Perintah tersebut digunakan untuk membersihkan cache konfigurasi agar Laravel menggunakan pengaturan environment yang sesuai.
+
+### Langkah 7 — Membuat Tabel Database
+
+Setelah koneksi MySQL benar dan database sudah tersedia, jalankan:
+
+```powershell
 php artisan migrate
 ```
 
-## 8. Instal Dependency Frontend
+Migration akan membuat tabel aplikasi berdasarkan struktur yang telah didefinisikan pada project.
 
-Pada terminal jalankan:
+Jangan menggunakan `php artisan migrate:fresh` pada database yang memiliki data penting karena perintah tersebut menghapus seluruh tabel sebelum membuatnya kembali.
 
-```bash
-npm install
-```
+### Langkah 8 — Menginstal Dependency Frontend
 
-Jika menggunakan PowerShell Windows dan perintah tersebut diblokir, gunakan:
+Jalankan:
 
 ```powershell
 npm.cmd install
 ```
 
-Kemudian bangun aset aplikasi:
+Perintah `npm.cmd` digunakan untuk menghindari pemblokiran skrip `npm.ps1` pada beberapa konfigurasi PowerShell Windows.
+
+Setelah instalasi selesai, bangun aset frontend:
 
 ```powershell
 npm.cmd run build
 ```
 
-## 9. Menjalankan Aplikasi
+Untuk pengembangan dengan Vite, dapat menggunakan:
+
+```powershell
+npm.cmd run dev
+```
+
+Jika menggunakan mode development, biarkan terminal Vite tetap aktif dan buka terminal baru untuk menjalankan Laravel.
+
+### Langkah 9 — Menjalankan Aplikasi
 
 Jalankan:
 
-```bash
+```powershell
 php artisan serve
 ```
 
-Buka browser dan akses:
+Kemudian buka browser:
 
-```text
 http://127.0.0.1:8000
+
+Apabila port 8000 sedang digunakan aplikasi lain, jalankan:
+
+```powershell
+php artisan serve --port=8001
 ```
 
-Aplikasi AUTOVEX siap digunakan.
+Kemudian akses:
 
----
+http://127.0.0.1:8001
 
-# API AUTOVEX
+Aplikasi AUTOVEX dapat digunakan setelah server berhasil dijalankan dan koneksi database tersedia.
 
-API tersedia untuk lima modul berikut:
+## REST API AUTOVEX
+
+AUTOVEX menyediakan REST API untuk lima modul:
 
 ```text
 /api/pelanggans
@@ -168,14 +239,29 @@ API tersedia untuk lima modul berikut:
 /api/pembayaran-services
 ```
 
-API dapat diuji menggunakan Postman dengan metode GET, POST, PUT, dan DELETE.
+API dapat diuji menggunakan Postman dengan metode HTTP:
 
-### Catatan
+- GET — mengambil data.
+- POST — menambahkan data.
+- PUT — memperbarui data.
+- DELETE — menghapus data.
 
-- File `.env` tidak disertakan dalam repository demi keamanan.
-- Folder `vendor` dan `node_modules` dibuat kembali melalui proses instalasi dependency.
-- Database harus dibuat dan dimigrasikan pada komputer masing-masing.
-- Data pelanggan, kendaraan, dan transaksi dari komputer pembuat project tidak otomatis ikut tersalin melalui Git Clone.
+Endpoint yang memerlukan ID, struktur request body, dan aturan validasi perlu disesuaikan dengan route serta controller pada project.
 
-**Repository GitHub:**  
+## Catatan Penting Git Clone
+
+1. File `.env` tidak disertakan dalam repository karena menyimpan konfigurasi lingkungan yang dapat berisi informasi sensitif.
+2. Folder `vendor` dan `node_modules` perlu diinstal kembali menggunakan Composer dan NPM.
+3. Database MySQL perlu disiapkan pada komputer yang menjalankan project.
+4. Data pelanggan, kendaraan, dan transaksi tidak otomatis ikut tersalin melalui Git Clone.
+5. Versi PHP yang tidak sesuai dapat menyebabkan `composer install` dan `php artisan serve` gagal.
+6. Aplikasi hasil clone dapat menggunakan folder, port, dan database terpisah agar tidak mengganggu project asli.
+7. Jangan mengunggah file `.env` atau kredensial database ke repository publik.
+
+## Repository GitHub
+
 https://github.com/Mulia123456/autovex13
+
+**AUTOVEX — Motorcycle Service Management System**
+
+Project aplikasi manajemen servis sepeda motor menggunakan Laravel, MySQL, REST API, Postman, dan GitHub.
